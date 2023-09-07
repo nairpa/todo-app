@@ -2,12 +2,12 @@ import type { Task } from "./taskEntity";
 
 interface TaskStore {
     // Sate
-    task: Task | undefined;
+    tasks: Task[] | undefined;
     isLoading: boolean;
     isUpdating: boolean;
 
     // Actions
-    loadInitialTask(): Promise<Task>;
+    loadInitialTasks(): Promise<Task[]>;
     setTask(task: Task): void;
     updateTask(task: Task): Promise<Task | undefined>;
 }

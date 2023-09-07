@@ -1,9 +1,9 @@
 import type { TaskStore } from "../domain/taskStore";
 
-type GetTaskStore = Pick<TaskStore, "loadInitialTask">;
+type GetTaskStore = Pick<TaskStore, "loadInitialTasks">;
 
 const getTaskUseCase = (store: GetTaskStore) => {
-    store.loadInitialTask();
+    store.loadInitialTasks();
 }
 
 export { getTaskUseCase };

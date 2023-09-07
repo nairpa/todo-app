@@ -1,12 +1,13 @@
+import { tasks } from "../constants/tasks";
 import type { Task } from "../domain/taskEntity";
 import { create } from "../domain/taskModel";
 
 let description = ''
 
-function getTask(): Promise<Task> {
+function getTasks(): Promise<Task[]> {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(create(description))
+            resolve(tasks)
         }, 1000);
     })
 }
@@ -20,4 +21,4 @@ function updateTask(task: Task):  Promise<Task> {
     })
 }
 
-export { getTask, updateTask }
+export { getTasks, updateTask }
