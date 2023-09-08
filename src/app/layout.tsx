@@ -20,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${josefin.className} text-base`}>{children}</body>
+      <body className={`${josefin.className} text-base bg-dark-blue`}>
+        <header className='bg-header-img h-[300px]'></header>
+        {children}
+      </body>
     </html>
   )
 }

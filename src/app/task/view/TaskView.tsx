@@ -15,14 +15,37 @@ const TaskView = () => {
     }, [getTasks])
 
     return (
-        <div className="task">
+        <div className="absolute shadow-2xl text-light-gray-blue w-[500px] -mt-[200px]">
+            <header>
+                <h1 className="text-[42px] font-[700] text-light-gray tracking-[1rem]">TODO</h1>
+                <div className="rounded-sm bg-dark-desat-blue mb-6 p-4 flex gap-2 ">
+                    <input type="checkbox"></input>
+                    <input type="text" placeholder="add a new task" />
+                </div>
+            </header>
             { isLoading ? (
                 <div> loading </div> 
             ) : (
-                <>
-                    <div>{ tasks?.map(task => <div>{task.description}</div>) }</div>
-                </>
+                <div className="rounded-sm bg-dark-desat-blue">
+                    { 
+                       tasks?.map(task => (
+                           <div className="p-4 flex gap-2 border-darker-blue-gray border-b">
+                               <input type="checkbox" checked={task.isCompleted}></input>
+                               <span>{task.description}</span>
+                           </div>
+                       ))
+                    }                        
+                </div>
             )}
+            <footer className="flex rounded-sm bg-dark-desat-blue items-center justify-between p-4 text-[14px]">
+                <span>items left</span>
+                <div className="flex gap-2">
+                    <span>All</span>
+                    <span>Active</span>
+                    <span>Completed</span>
+                </div>
+                <span>Clear completed</span>
+            </footer>
         </div>
     )
 }
