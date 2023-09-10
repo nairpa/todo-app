@@ -5,6 +5,7 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/shared/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     screens: {
@@ -43,7 +44,8 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'header-img': "url('/bg-desktop-dark.jpg')",
-      }
+        'gradient': "linear-gradient(65deg, hsl(192, 100%, 67%) 30%, hsl(280, 87%, 65%) 70%)"
+      },
     }
   },
   plugins: [],

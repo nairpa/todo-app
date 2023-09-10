@@ -1,3 +1,4 @@
+import { CheckButton } from "@/app/shared/CheckButton";
 import { useTaskViewController } from "../controller/taskViewController";
 import { useTaskStoreImplementation } from "../data/taskStoreImplementation"
 import React from 'react';
@@ -19,7 +20,7 @@ const TaskView = () => {
             <header>
                 <h1 className="text-[42px] font-[700] text-light-gray tracking-[1rem]">TODO</h1>
                 <div className="rounded-sm bg-dark-desat-blue mb-6 p-4 flex gap-2 ">
-                    <input type="checkbox"></input>
+                    <CheckButton />
                     <input type="text" placeholder="add a new task" />
                 </div>
             </header>
@@ -30,7 +31,7 @@ const TaskView = () => {
                     { 
                        tasks?.map(task => (
                            <div className="p-4 flex gap-2 border-darker-blue-gray border-b">
-                               <input type="checkbox" checked={task.isCompleted}></input>
+                                <CheckButton />
                                <span>{task.description}</span>
                            </div>
                        ))
