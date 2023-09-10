@@ -15,6 +15,10 @@ const TaskView = () => {
         getTasks();
     }, [getTasks])
 
+    const handleClick = () => {
+
+    }
+
     return (
         <div className="absolute shadow-2xl text-light-gray-blue w-[500px] -mt-[200px]">
             <header>
@@ -29,10 +33,10 @@ const TaskView = () => {
             ) : (
                 <div className="rounded-sm bg-dark-desat-blue">
                     { 
-                       tasks?.map(task => (
-                           <div className="p-4 flex gap-2 border-darker-blue-gray border-b">
-                                <CheckButton />
-                               <span>{task.description}</span>
+                       tasks?.map((task, i) => (
+                           <div key={i} className="p-4 flex gap-2 border-darker-blue-gray border-b">
+                                <CheckButton checked={task.isCompleted} onClick={handleClick}/>
+                               <span className={`${task.isCompleted ? 'line-through text-darker-blue-gray' : ''}`}>{task.description}</span>
                            </div>
                        ))
                     }                        
