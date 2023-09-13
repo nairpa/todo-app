@@ -2,6 +2,7 @@ import { CheckButton } from "@/app/shared/CheckButton";
 import { useTaskViewController } from "../controller/taskViewController";
 import { useTaskStoreImplementation } from "../data/taskStoreImplementation"
 import React from 'react';
+import { TextInput } from "@/app/shared/TextInput";
 
 const TaskView = () => {
     const store = useTaskStoreImplementation();
@@ -25,7 +26,7 @@ const TaskView = () => {
                 <h1 className="text-[42px] font-[700] text-light-gray tracking-[1rem]">TODO</h1>
                 <div className="rounded-sm bg-dark-desat-blue mb-6 p-4 flex gap-2 ">
                     <CheckButton />
-                    <input type="text" placeholder="add a new task" />
+                    <TextInput placeholder="add a new task"></TextInput>
                 </div>
             </header>
             { isLoading ? (

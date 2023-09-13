@@ -647,6 +647,9 @@ video {
 .line-through {
   text-decoration-line: line-through;
 }
+.caret-primary {
+  caret-color: #3a7bfd;
+}
 .opacity-0 {
   opacity: 0;
 }
@@ -654,6 +657,9 @@ video {
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.outline-0 {
+  outline-width: 0px;
 }
 .duration-200 {
   transition-duration: 200ms;
