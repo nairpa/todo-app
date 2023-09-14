@@ -3,10 +3,10 @@ import type { TaskStore } from "../domain/taskStore";
 
 type CreateTaskStore = Pick<TaskStore, "task" | "createTask" | "addTask">;
 
-const createTaskUseCase = (store: CreateTaskStore, createdBy: (task: Task['description']) => Task) => {
+const createTaskUseCase = (store: CreateTaskStore, createdBy: (task: Task['description']) => Omit<Task, 'id'>) => {
     const createdTask = store.task ? createdBy(store.task['description']) : store.task;
-    console.log(createdTask)
-    if (!createdTask || store.task.id === createdTask.id) return;
+
+    if (!createdTask) return;
 
     store.addTask(createdTask)
 

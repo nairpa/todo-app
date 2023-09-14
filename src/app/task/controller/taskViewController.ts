@@ -19,7 +19,7 @@ function useTaskViewController(store: TaskStore) {
   const createTask = React.useCallback(
     function(task: Task['description']) {
       addTaskUseCase({
-        task: { ...store.task, description: task },
+        task: store.task ? { ...store.task, description: task } : { id: 1, description: task, isCompleted: false },
         createTask: store.createTask,
         addTask: store.addTask
       })

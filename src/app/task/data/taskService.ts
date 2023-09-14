@@ -12,7 +12,7 @@ function getTasks(): Promise<Task[]> {
     })
 }
 
-function createTask(task: Task['description']):  Promise<Task> {
+function createTask(task: Task['description']):  Promise<Omit<Task, 'id'>> {
     return new Promise((resolve) => {
         setTimeout(() => {
             description = task;
