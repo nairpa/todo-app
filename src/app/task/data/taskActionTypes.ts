@@ -1,5 +1,5 @@
-export const SET_TASK = "SET_TASK";
+export const ADD_TASK = "ADD_TASK";
 export const GET_TASKS = "GET_TASKS";
 export const GET_TASKS_SUCCESS = "GET_TASKS_SUCCESS";
-export const UPDATE_TASK = "UPDATE_TASK";
-export const UPDATE_TASK_SUCCESS = "UPDATE_TASK_SUCCESS";
+export const CREATE_TASK = "CREATE_TASK";
+export const CREATE_TASK_SUCCESS = "CREATE_TASK_SUCCESS";

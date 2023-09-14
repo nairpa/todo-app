@@ -9,21 +9,21 @@ import type { TaskStoreState } from "./taskReducer";
 
 import {
   getTasksAction,
-  setTaskAction,
-  updateTaskAction
+  addTaskAction,
+  createTaskAction
 } from "./taskActions";
 
 const taskSelector = (state: AppRootState) => state.task;
 
 const useTaskStoreImplementation = (): TaskStore => {
-  const { tasks, isLoading, isUpdating } = useSelector<
+  const { tasks, task, isLoading, isUpdating } = useSelector<
     AppRootState,
     TaskStoreState
   >(taskSelector);
   const dispatch = useDispatch();
 
-  const setTask = React.useCallback(
-    (task: Task) => setTaskAction(task)(dispatch),
+  const addTask = React.useCallback(
+    (task: Task) => addTaskAction(task)(dispatch),
     [dispatch]
   );
 
@@ -32,18 +32,19 @@ const useTaskStoreImplementation = (): TaskStore => {
     [dispatch]
   );
 
-  const updateTask = React.useCallback(
-    (task: Task) => updateTaskAction(task)(dispatch),
+  const createTask = React.useCallback(
+    (task: Task['description']) => createTaskAction(task)(dispatch),
     [dispatch]
   );
 
   return {
+    task,
     tasks,
     isLoading,
     isUpdating,
-    setTask,
+    addTask,
     loadInitialTasks,
-    updateTask
+    createTask
   };
 };
 

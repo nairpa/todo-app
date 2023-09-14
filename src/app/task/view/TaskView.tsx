@@ -10,6 +10,7 @@ const TaskView = () => {
         tasks,
         isLoading,
         getTasks,
+        createTask
     } = useTaskViewController(store);
 
     React.useEffect(() => {
@@ -17,7 +18,13 @@ const TaskView = () => {
     }, [getTasks])
 
     const handleClick = () => {
+    
+    }
 
+    const handleTextInput = (event: any) => {
+        if(event.code === 'Enter') {
+            createTask(event.target.value)
+        }
     }
 
     return (
@@ -26,7 +33,7 @@ const TaskView = () => {
                 <h1 className="text-[42px] font-[700] text-light-gray tracking-[1rem]">TODO</h1>
                 <div className="rounded-sm bg-dark-desat-blue mb-6 p-4 flex gap-2 ">
                     <CheckButton />
-                    <TextInput placeholder="add a new task"></TextInput>
+                    <TextInput placeholder="add a new task" onKeyDown={handleTextInput}></TextInput>
                 </div>
             </header>
             { isLoading ? (

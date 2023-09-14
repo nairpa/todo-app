@@ -1,8 +1,8 @@
 import { Task } from "../domain/taskEntity";
 
 export const tasks: Task[] = [
-    { description: 'limpiar casa', isCompleted: false },
-    { description: 'ordenar pieza', isCompleted: true },
-    { description: 'sacar la basura', isCompleted: false },
-    { description: 'alimentar mascotas', isCompleted: false },
+    { id: 1, description: 'limpiar casa', isCompleted: false },
+    { id: 2, description: 'ordenar pieza', isCompleted: true },
+    { id: 3, description: 'sacar la basura', isCompleted: false },
+    { id: 4, description: 'alimentar mascotas', isCompleted: false },
 ]

@@ -12,13 +12,13 @@ function getTasks(): Promise<Task[]> {
     })
 }
 
-function updateTask(task: Task):  Promise<Task> {
+function createTask(task: Task['description']):  Promise<Task> {
     return new Promise((resolve) => {
         setTimeout(() => {
-            description = task.description;
+            description = task;
             resolve(create(description))
         }, 1000)
     })
 }
 
-export { getTasks, updateTask }
+export { getTasks, createTask }
