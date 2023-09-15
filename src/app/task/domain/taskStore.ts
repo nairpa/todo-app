@@ -10,7 +10,7 @@ interface TaskStore {
     // Actions
     loadInitialTasks(): Promise<Task[]>;
     addTask(task: Omit<Task, 'id'>): void;
-    // updateTask(task: Task): Promise<Task | undefined>;
+    updateTask(task: Task): Promise<Task | undefined>;
     createTask(task: Task['description']): Promise<Omit<Task, 'id'>>;
 }
 

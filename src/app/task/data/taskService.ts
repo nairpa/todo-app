@@ -21,4 +21,12 @@ function createTask(task: Task['description']):  Promise<Omit<Task, 'id'>> {
     })
 }
 
-export { getTasks, createTask }
+function updateTask(task: Task): Promise<Task> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(task)
+        })
+    })
+}
+
+export { getTasks, createTask, updateTask }

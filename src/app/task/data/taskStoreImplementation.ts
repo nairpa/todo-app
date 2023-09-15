@@ -10,7 +10,8 @@ import type { TaskStoreState } from "./taskReducer";
 import {
   getTasksAction,
   addTaskAction,
-  createTaskAction
+  createTaskAction,
+  updateTaskAction
 } from "./taskActions";
 
 const taskSelector = (state: AppRootState) => state.task;
@@ -37,6 +38,11 @@ const useTaskStoreImplementation = (): TaskStore => {
     [dispatch]
   );
 
+  const updateTask = React.useCallback(
+    (task: Task) => updateTaskAction(task)(dispatch),
+    [dispatch]
+  );
+
   return {
     task,
     tasks,
@@ -44,7 +50,8 @@ const useTaskStoreImplementation = (): TaskStore => {
     isUpdating,
     addTask,
     loadInitialTasks,
-    createTask
+    createTask,
+    updateTask,
   };
 };
 

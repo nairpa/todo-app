@@ -3,6 +3,7 @@ import { useTaskViewController } from "../controller/taskViewController";
 import { useTaskStoreImplementation } from "../data/taskStoreImplementation"
 import React from 'react';
 import { TextInput } from "@/app/shared/TextInput";
+import { Task } from "../domain/taskEntity";
 
 const TaskView = () => {
     const store = useTaskStoreImplementation();
@@ -10,21 +11,22 @@ const TaskView = () => {
         tasks,
         isLoading,
         getTasks,
-        createTask
+        createTask,
+        updateTask,
     } = useTaskViewController(store);
 
     React.useEffect(() => {
         getTasks();
     }, [getTasks])
 
-    const handleClick = () => {
-    
-    }
-
     const handleTextInput = (event: any) => {
         if(event.code === 'Enter') {
             createTask(event.target.value)
         }
+    }
+
+    const handleCheckButton = (event: any, task: Task) => {
+        updateTask(task)
     }
 
     return (
@@ -43,7 +45,7 @@ const TaskView = () => {
                     { 
                        tasks?.map((task, i) => (
                            <div key={i} className="p-4 flex gap-2 border-darker-blue-gray border-b">
-                                <CheckButton checked={task.isCompleted} onClick={handleClick}/>
+                                <CheckButton checked={task.isCompleted} onChange={(event) => handleCheckButton(event, task)}/>
                                <span className={`${task.isCompleted ? 'line-through text-darker-blue-gray' : ''}`}>{task.description}</span>
                            </div>
                        ))
