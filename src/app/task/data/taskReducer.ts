@@ -2,7 +2,14 @@ import type { AnyAction } from "@reduxjs/toolkit";
 import type { TaskStore } from "../domain/taskStore";
 import * as actionTypes from "./taskActionTypes";
 
-type TaskStoreState = Omit<TaskStore, "loadInitialTasks" | "setTask" | "createTask" | "addTask" | 'updateTask'>;
+type TaskStoreState = Omit<TaskStore, 
+    "loadInitialTasks" | 
+    "setTask" | 
+    "createTask" | 
+    "addTask" | 
+    "updateTask" |
+    "deleteTask"
+>;
 
 const INITIAL_STATE: TaskStoreState = {
     task: undefined,
@@ -27,6 +34,10 @@ const taskReducer = (state: TaskStoreState = INITIAL_STATE, action: AnyAction) =
             return { ...state, isUpdating: true };
         case actionTypes.UPDATE_TASK_SUCCESS:
             return { ...state, tasks: state.tasks?.length ? [ ...state.tasks?.filter(task => task.id !== action.task.id), {...action.task} ] : undefined, isUpdating: false };
+        case actionTypes.DELETE_TASK:
+            return { ...state, isUpdating: true };
+        case actionTypes.DELETE_TASK_SUCCESS:
+            return { ...state, tasks: state.tasks?.filter(task => task.id !== action.id )};
         default:
             return state;
     }

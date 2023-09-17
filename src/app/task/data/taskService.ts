@@ -29,4 +29,12 @@ function updateTask(task: Task): Promise<Task> {
     })
 }
 
-export { getTasks, createTask, updateTask }
+function deleteTask(id: number): Promise<void> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve()
+        })
+    })
+}
+
+export { getTasks, createTask, updateTask, deleteTask }

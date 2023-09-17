@@ -1,5 +1,5 @@
 import type { Task } from "../domain/taskEntity";
-import { getTasks, createTask, updateTask } from "./taskService";
+import { getTasks, createTask, updateTask, deleteTask } from "./taskService";
 import * as actionTypes from "./taskActionTypes";
 
 const addTaskAction = (task: Task) => (dispatch: any) => dispatch({ type: actionTypes.ADD_TASK, task });
@@ -31,4 +31,12 @@ const updateTaskAction = (task: Task) => (dispatch: any) => {
     })
 }
 
-export { getTasksAction, createTaskAction, addTaskAction, updateTaskAction };
+const deleteTaskAction = (task: Task) => (dispatch: any) => {
+    dispatch({ type: actionTypes.DELETE_TASK });
+
+    return deleteTask(task.id).then((_) => {
+        dispatch({ type: actionTypes.DELETE_TASK_SUCCESS, id: task.id });
+    })
+}
+
+export { getTasksAction, createTaskAction, addTaskAction, updateTaskAction , deleteTaskAction };

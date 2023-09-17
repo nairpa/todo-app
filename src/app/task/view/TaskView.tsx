@@ -13,6 +13,7 @@ const TaskView = () => {
         getTasks,
         createTask,
         updateTask,
+        deleteTask,
     } = useTaskViewController(store);
 
     React.useEffect(() => {
@@ -27,6 +28,11 @@ const TaskView = () => {
 
     const handleCheckButton = (event: any, task: Task) => {
         updateTask(task)
+    }
+
+    const handleDelete = (event: React.MouseEvent<HTMLSpanElement>, task: Task) => {
+        console.log(event);
+        deleteTask(task);
     }
 
     return (
@@ -44,9 +50,14 @@ const TaskView = () => {
                 <div className="rounded-sm bg-dark-desat-blue">
                     { 
                        tasks?.map((task, i) => (
-                           <div key={i} className="p-4 flex gap-2 border-darker-blue-gray border-b">
-                                <CheckButton checked={task.isCompleted} onChange={(event) => handleCheckButton(event, task)}/>
-                               <span className={`${task.isCompleted ? 'line-through text-darker-blue-gray' : ''}`}>{task.description}</span>
+                           <div key={i} className="p-4 group flex justify-between gap-2 border-darker-blue-gray border-b">
+                                <div className="flex items-center gap-2">
+                                    <CheckButton checked={task.isCompleted} onChange={(event) => handleCheckButton(event, task)}/>
+                                    <span className={`${task.isCompleted ? 'line-through text-darker-blue-gray' : ''}`}>{task.description}</span>
+                                </div>
+                               <span onClick={(event) => handleDelete(event, task)} className="hidden group-hover:inline cursor-pointer">
+                                    <img src="icon-cross.svg"></img>
+                               </span>
                            </div>
                        ))
                     }                        

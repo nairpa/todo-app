@@ -11,7 +11,8 @@ import {
   getTasksAction,
   addTaskAction,
   createTaskAction,
-  updateTaskAction
+  updateTaskAction,
+  deleteTaskAction
 } from "./taskActions";
 
 const taskSelector = (state: AppRootState) => state.task;
@@ -43,6 +44,11 @@ const useTaskStoreImplementation = (): TaskStore => {
     [dispatch]
   );
 
+  const deleteTask = React.useCallback(
+    (task: Task) => deleteTaskAction(task)(dispatch),
+    [dispatch]
+  )
+
   return {
     task,
     tasks,
@@ -52,6 +58,7 @@ const useTaskStoreImplementation = (): TaskStore => {
     loadInitialTasks,
     createTask,
     updateTask,
+    deleteTask,
   };
 };
 

@@ -4,6 +4,7 @@ import { getTaskUseCase } from "../useCases/getTaskUseCase";
 import { addTaskUseCase } from "../useCases/addTaskUseCase";
 import { Task } from "../domain/taskEntity";
 import { completeTaskUseCase } from "../useCases/completeTaskUseCase";
+import { deleteTaskUseCase } from "../useCases/deleteTaskUseCase";
 
 function useTaskViewController(store: TaskStore) {
   const getTasks = React.useCallback(
@@ -36,12 +37,23 @@ function useTaskViewController(store: TaskStore) {
     [store.updateTask]
   )
 
+  const deleteTask = React.useCallback(
+    function(task: Task) {
+      deleteTaskUseCase({
+        task: task,
+        deleteTask: store.deleteTask
+      })
+    },
+    [store.deleteTask]
+  )
+
   return {
     tasks: store.tasks,
     isLoading: typeof store.tasks === "undefined" || store.isLoading,
     getTasks,
     createTask,
     updateTask,
+    deleteTask,
   };
 }
 
